@@ -13,11 +13,8 @@ import java.util.*
 
 class CardPickFragment : Fragment() {
     private var cards: Vector<Card> = Vector<Card>()
-    private var cards_idxs: MutableMap<Card, Int> = mutableMapOf<Card, Int>()
     private var selected_cards: Vector<Card> = Vector<Card>()
     private lateinit var card_layout: LinearLayout
-    private lateinit var card_layout_02: LinearLayout
-    private lateinit var card_layout_03: LinearLayout
     private val wanted_cards: Int = 9
 
 
@@ -29,8 +26,6 @@ class CardPickFragment : Fragment() {
         cards
         val root: View = inflater.inflate(R.layout.activity_cardslideshow_layout, container, false)
         card_layout = root.findViewById(R.id.card_layout)
-        card_layout_02 = root.findViewById(R.id.card_layout_02)
-        card_layout_03 = root.findViewById(R.id.card_layout_03)
         return root
     }
 
@@ -40,11 +35,42 @@ class CardPickFragment : Fragment() {
         {
             var new_card: Card = CardFactory.newRandomCard(requireContext())
 
+            val bruh = LinearLayout.LayoutParams(500, 2000)
+            bruh.setMargins(-150, 0, -150, 0)
+
+
+            new_card.layoutParams = bruh
+            //new_card.getLayoutParams().width = 2;
+            new_card.setPadding(0, 0, 0, 0)
+
             new_card.setOnClickListener {
+                if (selected_cards.contains(new_card))
+                {
+                    // Deselect this card.
+
+                    selected_cards.remove(new_card)
+                } else {
+                    // Select this card!
+
+                    selected_cards.add(new_card)
+                }
+
+                if (selected_cards.size >= 3)
+                {
+                    val intent = Intent(context, CardShowHand::class.java)
+                    for (i in (0..selected_cards.size-1))
+                    {
+                        intent.putExtra(i.toString(), selected_cards[i].arcana.show())
+                    }
+
+                    startActivity(intent)
+                }
+
                 new_card.reverseCard()
             }
 
 
+            new_card.reverseCard()
             cards.add(new_card)
             card_layout.addView(new_card)
 

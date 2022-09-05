@@ -23,7 +23,7 @@ class Card @JvmOverloads constructor(
         scaleType = ScaleType.FIT_XY
         adjustViewBounds = true
 
-        reverseCard()
+        showCard()
     }
 
     fun showCard()
