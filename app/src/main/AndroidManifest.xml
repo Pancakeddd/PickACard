@@ -17,16 +17,11 @@
             android:name=".MainMenuActivity"
             android:exported="false" />
         <activity
-            android:name=".CardShowHand"
+            android:name=".CardShowHandActivity"
             android:exported="false" />
         <activity
             android:name=".PickACardActivity"
             android:exported="false" />
-        <activity
-            android:name=".pickacard"
-            android:exported="false"
-            android:label="@string/title_activity_pickacard"
-            android:theme="@style/Theme.PickACard.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

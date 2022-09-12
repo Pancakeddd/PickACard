@@ -1,9 +1,7 @@
 package com.example.pickacard
 
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +13,7 @@ class CardPickFragment : Fragment() {
     private var cards: Vector<Card> = Vector<Card>()
     private var selected_cards: Vector<Card> = Vector<Card>()
     private lateinit var card_layout: LinearLayout
-    private val wanted_cards: Int = 9
+    var wanted_cards: Int = 0
 
 
     override fun onCreateView(
@@ -26,12 +24,13 @@ class CardPickFragment : Fragment() {
         cards
         val root: View = inflater.inflate(R.layout.activity_cardslideshow_layout, container, false)
         card_layout = root.findViewById(R.id.card_layout)
+
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        for (i in 0..wanted_cards)
+        for (i in 1..wanted_cards)
         {
             var new_card: Card = CardFactory.newRandomCard(requireContext())
 
@@ -57,7 +56,7 @@ class CardPickFragment : Fragment() {
 
                 if (selected_cards.size >= 3)
                 {
-                    val intent = Intent(context, CardShowHand::class.java)
+                    val intent = Intent(context, CardShowHandActivity::class.java)
                     for (i in (0..selected_cards.size-1))
                     {
                         intent.putExtra(i.toString(), selected_cards[i].arcana.show())
