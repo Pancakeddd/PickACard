@@ -32,10 +32,10 @@ class CardPickFragment : Fragment() {
 
         for (i in 1..wanted_cards)
         {
-            var new_card: Card = CardFactory.newRandomCard(requireContext())
+            var new_card: Card = CardFactory.newRandomCard(requireContext(), cards)
 
-            val bruh = LinearLayout.LayoutParams(500, 2000)
-            bruh.setMargins(-150, 0, -150, 0)
+            val bruh = LinearLayout.LayoutParams(200, 2000)
+            bruh.setMargins(50, 0, 50, 0)
 
 
             new_card.layoutParams = bruh
@@ -54,7 +54,7 @@ class CardPickFragment : Fragment() {
                     selected_cards.add(new_card)
                 }
 
-                if (selected_cards.size >= 3)
+                if (selected_cards.size >= wanted_cards)
                 {
                     val intent = Intent(context, CardShowHandActivity::class.java)
                     for (i in (0..selected_cards.size-1))
@@ -62,12 +62,13 @@ class CardPickFragment : Fragment() {
                         intent.putExtra(i.toString(), selected_cards[i].arcana.show())
                     }
 
+                    intent.putExtra("cardsamount", wanted_cards)
+
                     startActivity(intent)
                 }
 
                 new_card.reverseCard()
             }
-
 
             new_card.reverseCard()
             cards.add(new_card)

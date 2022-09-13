@@ -8,10 +8,7 @@ class PickACardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pick_acard)
 
-        if (intent.getStringExtra("cardstype") == "threecards")
-        {
-            val cpf: CardPickFragment = (supportFragmentManager.findFragmentById(R.id.cardpickfragment)!! as CardPickFragment)
-            cpf.wanted_cards = 3
-        }
+        val cpf: CardPickFragment = (supportFragmentManager.findFragmentById(R.id.cardpickfragment)!! as CardPickFragment)
+        cpf.wanted_cards = intent.getIntExtra("cardstype", 0)
     }
 }

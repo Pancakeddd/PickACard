@@ -1,6 +1,8 @@
 package com.example.pickacard
 
 import android.text.TextUtils.substring
+import java.util.*
+import kotlin.random.Random
 
 
 enum class Suit(val z: Char)
@@ -83,18 +85,20 @@ object ArcanaFactory
     fun newRandomArcana() : Arcana {
         var arcanatype: Arcana.ArcanaType = Arcana.ArcanaType.MAJOR_ARCANA
 
+        val rz = Random(Calendar.getInstance().timeInMillis)
+
         if ((0..1).random() == 0) {
             arcanatype = Arcana.ArcanaType.MINOR_ARCANA
         }
 
         if (arcanatype == Arcana.ArcanaType.MAJOR_ARCANA)
         {
-            val arcanavalue: Int = (0..max_majorarcana).random()
+            val arcanavalue: Int = rz.nextInt(0, max_majorarcana)
 
             return Arcana(arcanavalue)
         } else {
-            val arcanavalue: Int = (0..max_minorarcana).random()
-            val arcanasuit: Suit = Suit.values().random()
+            val arcanavalue: Int = rz.nextInt(0, max_minorarcana)
+            val arcanasuit: Suit = Suit.values()[rz.nextInt(0, Suit.values().size)]
 
             return Arcana(arcanasuit, arcanavalue)
         }

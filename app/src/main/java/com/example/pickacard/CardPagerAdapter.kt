@@ -11,7 +11,7 @@ class CardPagerAdapter(fragment: Fragment, val extras: Bundle?) :
     FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int {
-        return 3
+        return extras?.getInt("cardsamount")!!
     }
 
     override fun createFragment(position: Int): Fragment {

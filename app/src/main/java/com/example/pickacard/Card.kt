@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
+import java.util.*
 
 
 class Card @JvmOverloads constructor(
@@ -73,11 +74,23 @@ class Card @JvmOverloads constructor(
 }
 
 object CardFactory {
-    fun newRandomCard(context: Context): Card {
+    fun newRandomCard(context: Context, cards: Vector<Card>): Card {
         // Cards can start reversed or not reversed, so we should run the reverseCard() function
         val new_card = Card(context, null, 0)
 
+        while (true)
+        {
+            for (card in cards)
+            {
+                if (card.arcana.show() == new_card.arcana.show())
+                {
+                    new_card.arcana = ArcanaFactory.newRandomArcana()
+                    break
+                }
+            }
 
+            break
+        }
 
         return new_card
     }

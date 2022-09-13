@@ -10,7 +10,7 @@ class CardShowHandActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show_hand)
         //val extras: Bundle? = intent.extras
 
-        //val pagerFragment: PagerFragment = findViewById(R.id.pagerfragment).get
+        //val pagerFragment: CardPagerFragment = findViewById(R.id.pagerfragment)
         //pagerFragment.arguments = extras
     }
 }

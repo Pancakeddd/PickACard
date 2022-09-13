@@ -7,40 +7,15 @@
 
     <LinearLayout
         android:id="@+id/card_layout"
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:translationX="-6dp"
-        android:translationY="-4dp"
+        android:translationX="0dp"
+        android:translationY="0dp"
         android:visibility="visible"
         tools:layout_editor_absoluteX="-6dp"
         tools:layout_editor_absoluteY="-4dp">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/card_layout_02"
-        android:layout_width="408dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:translationX="-6dp"
-        android:translationY="282dp"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="282dp">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/card_layout_03"
-        android:layout_width="406dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:translationX="-6dp"
-        android:translationY="300dp"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="563dp">
 
     </LinearLayout>
 
